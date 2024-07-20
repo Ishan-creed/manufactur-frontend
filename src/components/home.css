@@ -1,0 +1,157 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    margin-bottom: 0;
+}
+
+.home-container {
+    margin-top: 4px;
+    flex: 1; /* Allow the container to grow and fill the available space */
+    text-align: center;
+    padding: 20px;
+    height: fit-content;
+}
+
+h1 {
+    margin-bottom: 40px;
+
+}
+
+.add-entry-button {
+    margin-bottom: 60px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-entry-button:hover {
+    background-color: #0056b3;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Ensure footer is at the bottom */
+.footer-container {
+    margin-top: 18vw; /* Adjust this value as needed */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: auto; /* Allow horizontal scrolling */
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        border: none;
+    }
+
+    thead {
+        display: none; /* Hide table headers */
+    }
+
+    tbody, tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem; /* Space between rows */
+    }
+
+    td {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    td::before {
+        content: attr(data-label); /* Add a label for each data cell */
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .footer-container {
+        margin-top: 18vw; /* Adjust this value as needed */
+    }
+}
+
+/* Existing styles... */
+
+.delete-button {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Existing styles... */
+
+.download-button {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px; /* Add space between buttons */
+}
+
+.download-button:hover {
+    background-color: #218838;
+}
