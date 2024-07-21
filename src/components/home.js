@@ -8,6 +8,7 @@ import jsPDF from 'jspdf'; // Import jsPDF
 
 const Home = () => {
     const [sizes, setSizes] = useState([]);
+    const [loading, setLoading] = useState(false); // Add loading state
     const navigate = useNavigate(); // Initialize useNavigate
 
     useEffect(() => {
@@ -24,15 +25,19 @@ const Home = () => {
     }, []);
 
     const handleDelete = async (id) => {
+        setLoading(true); // Show loader
         try {
             await axios.delete(`https://manufactur-backend.onrender.com/api/sizes/${id}`);
             setSizes(sizes.filter(size => size._id !== id));
         } catch (error) {
             console.error('Error deleting item', error);
+        } finally {
+            setLoading(false); // Hide loader
         }
     };
 
     const handleDownload = (size) => {
+        setLoading(true); // Show loader
         const doc = new jsPDF();
 
         doc.setFontSize(12);
@@ -55,13 +60,15 @@ const Home = () => {
         });
 
         doc.save(`size_${size._id}.pdf`);
+        setLoading(false); // Hide loader
     };
 
     return (
         <div className="home-container">
-            <div className="header" style={{display: "flex", alignItems: "center"}}>
-                <img style={{height: '100px', marginRight: '20px'}} src={logo} alt="Logo" className="logo" />
-                <h1 style={{textDecoration: "underline"}}>Ledger Report</h1>
+            {loading && <div className="loader">Loading...</div>} {/* Loader component */}
+            <div className="header" style={{ display: "flex", alignItems: "center" }}>
+                <img style={{ height: '100px', marginRight: '20px' }} src={logo} alt="Logo" className="logo" />
+                <h1 style={{ textDecoration: "underline" }}>Ledger Report</h1>
             </div>
             <button className="add-entry-button" onClick={() => navigate('/size-form')}>Add New Entry</button>
             <div className="table-container">
@@ -86,9 +93,9 @@ const Home = () => {
                                 <td data-label="Date">{new Date(size.date).toLocaleDateString()}</td>
                                 <td data-label="Grade">{size.grade}</td>
                                 <td data-label="Size">{size.size}</td>
-                                <td data-label="Weight Used in Production">{size.weightUsed} KGs</td>
+                                <td data-label="Weight Used in Production">{size.weightUsed}</td>
                                 <td data-label="Inner Box Qty">{size.innerBoxQty}</td>
-                                <td data-label="Weight Per Inner Box">{size.weightPerInnerBox} KGs</td>
+                                <td data-label="Weight Per Inner Box">{size.weightPerInnerBox}</td>
                                 <td data-label="No of Boxes Packed">{size.boxesPacked}</td>
                                 <td data-label="Loose Pcs">{size.loosePcs}</td>
                                 <td data-label="Total No of Pcs Received for Packing">{size.totalPcsReceived}</td>
