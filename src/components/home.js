@@ -86,9 +86,9 @@ const Home = () => {
                                 <td data-label="Date">{new Date(size.date).toLocaleDateString()}</td>
                                 <td data-label="Grade">{size.grade}</td>
                                 <td data-label="Size">{size.size}</td>
-                                <td data-label="Weight Used in Production">{size.weightUsed}</td>
+                                <td data-label="Weight Used in Production">{size.weightUsed} KGs</td>
                                 <td data-label="Inner Box Qty">{size.innerBoxQty}</td>
-                                <td data-label="Weight Per Inner Box">{size.weightPerInnerBox}</td>
+                                <td data-label="Weight Per Inner Box">{size.weightPerInnerBox} KGs</td>
                                 <td data-label="No of Boxes Packed">{size.boxesPacked}</td>
                                 <td data-label="Loose Pcs">{size.loosePcs}</td>
                                 <td data-label="Total No of Pcs Received for Packing">{size.totalPcsReceived}</td>
