@@ -14,7 +14,6 @@ const SizeForm = () => {
         weightPerInnerBox: '',
         boxesPacked: '',
         loosePcs: '',
-        totalPcsReceived: '',
         date: ''
     });
 
@@ -48,7 +47,6 @@ const SizeForm = () => {
                 <input type="number" name="weightPerInnerBox" placeholder="Weight Per Inner Box" step="0.001" onChange={handleChange} />
                 <input type="number" name="boxesPacked" placeholder="Number of Boxes Packed" onChange={handleChange} />
                 <input type="number" name="loosePcs" placeholder="Loose Pieces" onChange={handleChange} />
-                <input type="number" name="totalPcsReceived" placeholder="Total Pieces Received for Packing" onChange={handleChange} />
                 <input type="date" name="date" placeholder="Date" onChange={handleChange} />
                 <button type="submit">Submit</button>
                 <button type="button" className="see-records-button" onClick={() => navigate('/')}>See Records</button>
